@@ -1,0 +1,79 @@
+﻿[D] 2019-12-31T19:51:36.982 Dapper.QueryInternal
+DECLARE name NVARCHAR(4000) = 'ConsoleProject_Default_v1';
+
+SELECT * FROM sys.databases WHERE NAME = @name
+
+[D] 2019-12-31T19:51:44.788 ExecuteReader
+DECLARE @p1 NVARCHAR(4000) = 'admin';
+
+SELECT 
+T0.[UserId] AS [UserId],
+T0.[Username] AS [Username],
+T0.[Source] AS [Source],
+T0.[PasswordHash] AS [PasswordHash],
+T0.[PasswordSalt] AS [PasswordSalt],
+T0.[DisplayName] AS [DisplayName],
+T0.[Email] AS [Email],
+T0.[UserImage] AS [UserImage],
+T0.[LastDirectoryUpdate] AS [LastDirectoryUpdate],
+T0.[IsActive] AS [IsActive],
+T0.[InsertUserId] AS [InsertUserId],
+T0.[InsertDate] AS [InsertDate],
+T0.[UpdateUserId] AS [UpdateUserId],
+T0.[UpdateDate] AS [UpdateDate] 
+FROM [Users] T0 
+WHERE (T0.[Username] = @p1)
+
+[D] 2019-12-31T19:51:44.790 END - ExecuteReader
+[D] 2019-12-31T19:51:46.283 ExecuteReader
+
+SELECT 
+T0.[Id] AS [Id],
+T0.[LanguageName] AS [LanguageName],
+T0.[LanguageId] AS [LanguageId] 
+FROM [Languages] T0 
+ORDER BY T0.[LanguageName]
+
+[D] 2019-12-31T19:51:46.285 END - ExecuteReader
+[D] 2019-12-31T19:52:00.442 ExecuteReader
+
+SELECT 
+T0.[Student_Id] AS [StudentId],
+CONCAT(T0.[Name], CONCAT(' - ' , T0.Student_Id)) AS [LookupText] 
+FROM [dbo].[StudentInfo_tbl] T0 
+ORDER BY CONCAT(T0.[Name], CONCAT(' - ' , T0.Student_Id))
+
+[D] 2019-12-31T19:52:00.444 END - ExecuteReader
+[D] 2019-12-31T19:52:00.619 ExecuteReader
+
+SELECT 
+T0.[ExamID] AS [ExamId],
+T0.[Exam_Name] AS [ExamName] 
+FROM [dbo].[ExamType] T0 
+ORDER BY T0.[Exam_Name]
+
+[D] 2019-12-31T19:52:00.623 END - ExecuteReader
+[D] 2019-12-31T19:52:00.807 ExecuteReader
+
+SELECT TOP 20 
+T0.[ResultID] AS [ResultId],
+T0.[ExamDate] AS [ExamDate],
+T0.[Student_Id] AS [StudentId],
+T0.[BatchId] AS [BatchId],
+T0.[ExamType] AS [ExamType],
+T0.[ChapterNo] AS [ChapterNo],
+T0.[TotalMark] AS [TotalMark],
+T0.[ObatainedMark] AS [ObatainedMark],
+T0.[HeightMark] AS [HeightMark],
+jExamType.[Exam_Name] AS [ExamTypeExamName],
+jBatch.[Batch_Name] AS [BatchBatchName] 
+FROM [dbo].[ExamResult] T0 
+LEFT JOIN [dbo].[ExamType] jExamType ON (jExamType.[ExamID] = T0.[ExamType]) 
+LEFT JOIN [dbo].[Batch_tbl] jBatch ON (jBatch.[Batch_Id] = T0.[BatchId]) 
+ORDER BY T0.[ChapterNo], T0.[ResultID];
+SELECT count(*)  
+FROM [dbo].[ExamResult] T0 
+LEFT JOIN [dbo].[ExamType] jExamType ON (jExamType.[ExamID] = T0.[ExamType]) 
+LEFT JOIN [dbo].[Batch_tbl] jBatch ON (jBatch.[Batch_Id] = T0.[BatchId])
+
+[D] 2019-12-31T19:52:00.812 END - ExecuteReader

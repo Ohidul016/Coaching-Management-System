@@ -1,0 +1,75 @@
+﻿@model ConsoleProject.Default.PaymentDetailsReportData
+
+@if ((bool?)ViewData["Printing"] == true)
+{
+    Layout = MVC.Views.Shared._LayoutPaymentReport;
+}
+
+    <section class="invoice" style="font-size: 18px">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    Payment Information
+                    <small class="pull-right">Date: @DateTime.Now.ToShortDateString()</small>
+                </h2>
+            </div>
+        </div>
+        <!-- info row -->
+        <!-- /.row -->
+        <!-- Table row -->
+        <div class="row">
+            <div class="col-xs-12 table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="4" class="text-center"> Personal Details</th>
+                        </tr>
+                        <tr>
+
+                            <th>Full Name</th>
+                            <td>@Model.Student.StudentName</td>
+
+                            <th>Roll No</th>
+                            <td>@Model.Student.StudentId</td>
+                        </tr>
+
+                        <tr>
+                            <th>College Name</th>
+                            <td  colspan="3">@Model.Student.StudentCollegeName</td> 
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <!-- /.col -->
+        </div>
+
+        <!-- Table row -->
+        <div class="row" style=" margin-top:30px">
+            <div class="col-xs-12 table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="4" class="text-center">Payment Information</th>
+                        </tr>
+                        <tr>
+                            <th>Payment Date</th>
+                            <td>
+                                @{
+                                    var date1 = Convert.ToDateTime(Model.Student.PaymentDate).ToString("dd/MMM/yyyy");
+
+                                }
+                                @date1
+
+                            </td>
+                            <th>Amount</th>
+                            <td>
+                              @Model.Student.Amount
+                           </td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <!-- /.col -->
+        </div>
+
+    </section>

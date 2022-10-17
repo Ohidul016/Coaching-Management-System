@@ -1,0 +1,364 @@
+﻿[D] 2019-12-30T20:22:06.226 Dapper.QueryInternal
+DECLARE name NVARCHAR(4000) = 'ConsoleProject_Default_v1';
+
+SELECT * FROM sys.databases WHERE NAME = @name
+
+[D] 2019-12-30T20:22:21.683 ExecuteReader
+DECLARE @p1 NVARCHAR(4000) = 'admin';
+
+SELECT 
+T0.[UserId] AS [UserId],
+T0.[Username] AS [Username],
+T0.[Source] AS [Source],
+T0.[PasswordHash] AS [PasswordHash],
+T0.[PasswordSalt] AS [PasswordSalt],
+T0.[DisplayName] AS [DisplayName],
+T0.[Email] AS [Email],
+T0.[UserImage] AS [UserImage],
+T0.[LastDirectoryUpdate] AS [LastDirectoryUpdate],
+T0.[IsActive] AS [IsActive],
+T0.[InsertUserId] AS [InsertUserId],
+T0.[InsertDate] AS [InsertDate],
+T0.[UpdateUserId] AS [UpdateUserId],
+T0.[UpdateDate] AS [UpdateDate] 
+FROM [Users] T0 
+WHERE (T0.[Username] = @p1)
+
+[D] 2019-12-30T20:22:21.685 END - ExecuteReader
+[D] 2019-12-30T20:22:23.357 ExecuteReader
+
+SELECT 
+T0.[Id] AS [Id],
+T0.[LanguageName] AS [LanguageName],
+T0.[LanguageId] AS [LanguageId] 
+FROM [Languages] T0 
+ORDER BY T0.[LanguageName]
+
+[D] 2019-12-30T20:22:23.359 END - ExecuteReader
+[D] 2019-12-30T20:22:37.953 ExecuteReader
+
+SELECT 
+T0.[Batch_Id] AS [BatchId],
+CONCAT(T0.[Batch_Name], CONCAT(' : Time( ' , T0.Batch_Time,' )') , CONCAT(' Day : ' , T0.Batch_Days)) AS [LookupText] 
+FROM [dbo].[Batch_tbl] T0 
+ORDER BY CONCAT(T0.[Batch_Name], CONCAT(' : Time( ' , T0.Batch_Time,' )') , CONCAT(' Day : ' , T0.Batch_Days))
+
+[D] 2019-12-30T20:22:37.956 END - ExecuteReader
+[D] 2019-12-30T20:22:38.156 ExecuteReader
+
+SELECT TOP 20 
+T0.[Student_Id] AS [StudentId],
+T0.[Name] AS [Name],
+T0.[Gender] AS [Gender],
+T0.[College_Name] AS [CollegeName],
+T0.[College_batch] AS [CollegeBatch],
+T0.[Father_Name] AS [FatherName],
+T0.[Mother_Name] AS [MotherName],
+T0.[Address] AS [Address],
+T0.[Description] AS [Description],
+T0.[Mother_Phone] AS [MotherPhone],
+T0.[Father_Phone] AS [FatherPhone],
+T0.[Personal_Phone] AS [PersonalPhone],
+T0.[User_Image] AS [UserImage],
+T0.[Batch_Id] AS [BatchId],
+T0.[AdmissionDate] AS [AdmissionDate],
+T0.[AdmissionType] AS [AdmissionType],
+T0.[Course_TotalFee] AS [CourseTotalFee],
+T0.[Course_Duration] AS [CourseDuration],
+T0.[Monthly_Fee] AS [MonthlyFee],
+T0.[Left_Date] AS [LeftDate],
+T0.[Entry_Date] AS [EntryDate],
+T0.[Entry_User] AS [EntryUser],
+T0.[IsActive] AS [IsActive],
+jStudent.[Name] AS [StudentName],
+jBatch.[Batch_Name] AS [BatchBatchName],
+T0.[StudentDepartment] AS [StudentDepartment] 
+FROM [dbo].[StudentInfo_tbl] T0 
+LEFT JOIN [dbo].[StudentInfo_tbl] jStudent ON (jStudent.[Student_Id] = T0.[Student_Id]) 
+LEFT JOIN [dbo].[Batch_tbl] jBatch ON (jBatch.[Batch_Id] = T0.[Batch_Id]) 
+ORDER BY CONCAT(T0.[Name], CONCAT(' - ' , T0.Student_Id)), T0.[Student_Id];
+SELECT count(*)  
+FROM [dbo].[StudentInfo_tbl] T0 
+LEFT JOIN [dbo].[StudentInfo_tbl] jStudent ON (jStudent.[Student_Id] = T0.[Student_Id]) 
+LEFT JOIN [dbo].[Batch_tbl] jBatch ON (jBatch.[Batch_Id] = T0.[Batch_Id])
+
+[D] 2019-12-30T20:22:38.168 END - ExecuteReader
+[D] 2019-12-30T20:22:51.249 ExecuteReader
+DECLARE @p1 INT = 1002;
+
+SELECT 
+T0.[Student_Id] AS [StudentId],
+T0.[Name] AS [Name],
+T0.[Gender] AS [Gender],
+T0.[College_Name] AS [CollegeName],
+T0.[College_batch] AS [CollegeBatch],
+T0.[Father_Name] AS [FatherName],
+T0.[Mother_Name] AS [MotherName],
+T0.[Address] AS [Address],
+T0.[Description] AS [Description],
+T0.[Mother_Phone] AS [MotherPhone],
+T0.[Father_Phone] AS [FatherPhone],
+T0.[Personal_Phone] AS [PersonalPhone],
+T0.[User_Image] AS [UserImage],
+T0.[Batch_Id] AS [BatchId],
+T0.[AdmissionDate] AS [AdmissionDate],
+T0.[AdmissionType] AS [AdmissionType],
+T0.[Course_TotalFee] AS [CourseTotalFee],
+T0.[Course_Duration] AS [CourseDuration],
+T0.[Monthly_Fee] AS [MonthlyFee],
+T0.[Left_Date] AS [LeftDate],
+T0.[Entry_Date] AS [EntryDate],
+T0.[Entry_User] AS [EntryUser],
+T0.[IsActive] AS [IsActive],
+jStudent.[Name] AS [StudentName],
+jStudent.[Gender] AS [StudentGender],
+jStudent.[College_Name] AS [StudentCollegeName],
+jStudent.[College_batch] AS [StudentCollegeBatch],
+jStudent.[Father_Name] AS [StudentFatherName],
+jStudent.[Mother_Name] AS [StudentMotherName],
+jStudent.[Address] AS [StudentAddress],
+jStudent.[Description] AS [StudentDescription],
+jStudent.[Mother_Phone] AS [StudentMotherPhone],
+jStudent.[Father_Phone] AS [StudentFatherPhone],
+jStudent.[Personal_Phone] AS [StudentPersonalPhone],
+jStudent.[User_Image] AS [StudentUserImage],
+jStudent.[Batch_Id] AS [StudentBatchId],
+jStudent.[AdmissionDate] AS [StudentAdmissionDate],
+jStudent.[AdmissionType] AS [StudentAdmissionType],
+jStudent.[Course_TotalFee] AS [StudentCourseTotalFee],
+jStudent.[Course_Duration] AS [StudentCourseDuration],
+jStudent.[Monthly_Fee] AS [StudentMonthlyFee],
+jStudent.[Left_Date] AS [StudentLeftDate],
+jStudent.[Entry_Date] AS [StudentEntryDate],
+jStudent.[Entry_User] AS [StudentEntryUser],
+jStudent.[IsActive] AS [StudentIsActive],
+jBatch.[Batch_Name] AS [BatchBatchName],
+jBatch.[Batch_Time] AS [BatchBatchTime],
+jBatch.[Batch_Days] AS [BatchBatchDays],
+jBatch.[IsActive] AS [BatchIsActive],
+CONCAT(T0.[Name], CONCAT(' - ' , T0.Student_Id)) AS [LookupText],
+T0.[StudentDepartment] AS [StudentDepartment] 
+FROM [dbo].[StudentInfo_tbl] T0 
+LEFT JOIN [dbo].[StudentInfo_tbl] jStudent ON (jStudent.[Student_Id] = T0.[Student_Id]) 
+LEFT JOIN [dbo].[Batch_tbl] jBatch ON (jBatch.[Batch_Id] = T0.[Batch_Id]) 
+WHERE (T0.[Student_Id] = @p1)
+
+[D] 2019-12-30T20:22:51.254 END - ExecuteReader
+[D] 2019-12-30T20:23:15.807 ExecuteReader
+DECLARE @p1 INT = 1002;
+
+SELECT 
+T0.[Student_Id] AS [StudentId],
+T0.[Name] AS [Name],
+T0.[Gender] AS [Gender],
+T0.[College_Name] AS [CollegeName],
+T0.[College_batch] AS [CollegeBatch],
+T0.[Father_Name] AS [FatherName],
+T0.[Mother_Name] AS [MotherName],
+T0.[Address] AS [Address],
+T0.[Description] AS [Description],
+T0.[Mother_Phone] AS [MotherPhone],
+T0.[Father_Phone] AS [FatherPhone],
+T0.[Personal_Phone] AS [PersonalPhone],
+T0.[User_Image] AS [UserImage],
+T0.[Batch_Id] AS [BatchId],
+T0.[AdmissionDate] AS [AdmissionDate],
+T0.[AdmissionType] AS [AdmissionType],
+T0.[Course_TotalFee] AS [CourseTotalFee],
+T0.[Course_Duration] AS [CourseDuration],
+T0.[Monthly_Fee] AS [MonthlyFee],
+T0.[Left_Date] AS [LeftDate],
+T0.[Entry_Date] AS [EntryDate],
+T0.[Entry_User] AS [EntryUser],
+T0.[IsActive] AS [IsActive],
+T0.[StudentDepartment] AS [StudentDepartment] 
+FROM [dbo].[StudentInfo_tbl] T0 
+WHERE (T0.[Student_Id] = @p1)
+
+[D] 2019-12-30T20:23:15.809 END - ExecuteReader
+[D] 2019-12-30T20:23:15.830 ExecuteNonQuery
+DECLARE @p1 NVARCHAR(4000) = 'aaa';
+DECLARE @p2 BIT = 0;
+DECLARE @p3 NVARCHAR(4000) = 'aaa';
+DECLARE @p4 NVARCHAR(4000) = 'aa';
+DECLARE @p5 NVARCHAR(4000) = 'a';
+DECLARE @p6 NVARCHAR(4000) = 'aa';
+DECLARE @p7 NVARCHAR(4000) = 'a';
+DECLARE @p8 NVARCHAR(4000) = 'a';
+DECLARE @p9 NVARCHAR(4000) = '213123';
+DECLARE @p10 NVARCHAR(4000) = '123123';
+DECLARE @p11 NVARCHAR(4000) = '1312312';
+DECLARE @p12 NVARCHAR(4000) = 'StudentImage/00001/00001002_ddtkajfuiltxc.png';
+DECLARE @p13 INT = 2;
+DECLARE @p14 DATETIME2 = '20191228';
+DECLARE @p15 INT = 1;
+DECLARE @p16 DECIMAL = 11111;
+DECLARE @p17 FLOAT = 12;
+DECLARE @p18 NVARCHAR(1) = NULL;
+DECLARE @p19 DATETIME2 = '20201201';
+DECLARE @p20 DATETIME2 = '20191203';
+DECLARE @p21 NVARCHAR(1) = NULL;
+DECLARE @p22 BIT = 1;
+DECLARE @p23 NVARCHAR(4000) = 'Science';
+DECLARE @p24 INT = 1002;
+
+UPDATE [dbo].[StudentInfo_tbl] SET [Name] = @p1, [Gender] = @p2, [College_Name] = @p3, [College_batch] = @p4, [Father_Name] = @p5, [Mother_Name] = @p6, [Address] = @p7, [Description] = @p8, [Mother_Phone] = @p9, [Father_Phone] = @p10, [Personal_Phone] = @p11, [User_Image] = @p12, [Batch_Id] = @p13, [AdmissionDate] = @p14, [AdmissionType] = @p15, [Course_TotalFee] = @p16, [Course_Duration] = @p17, [Monthly_Fee] = @p18, [Left_Date] = @p19, [Entry_Date] = @p20, [Entry_User] = @p21, [IsActive] = @p22, [StudentDepartment] = @p23 WHERE ([Student_Id] = @p24)
+
+[D] 2019-12-30T20:23:15.840 END - ExecuteNonQuery
+[D] 2019-12-30T20:23:15.925 ExecuteReader
+
+SELECT TOP 20 
+T0.[Student_Id] AS [StudentId],
+T0.[Name] AS [Name],
+T0.[Gender] AS [Gender],
+T0.[College_Name] AS [CollegeName],
+T0.[College_batch] AS [CollegeBatch],
+T0.[Father_Name] AS [FatherName],
+T0.[Mother_Name] AS [MotherName],
+T0.[Address] AS [Address],
+T0.[Description] AS [Description],
+T0.[Mother_Phone] AS [MotherPhone],
+T0.[Father_Phone] AS [FatherPhone],
+T0.[Personal_Phone] AS [PersonalPhone],
+T0.[User_Image] AS [UserImage],
+T0.[Batch_Id] AS [BatchId],
+T0.[AdmissionDate] AS [AdmissionDate],
+T0.[AdmissionType] AS [AdmissionType],
+T0.[Course_TotalFee] AS [CourseTotalFee],
+T0.[Course_Duration] AS [CourseDuration],
+T0.[Monthly_Fee] AS [MonthlyFee],
+T0.[Left_Date] AS [LeftDate],
+T0.[Entry_Date] AS [EntryDate],
+T0.[Entry_User] AS [EntryUser],
+T0.[IsActive] AS [IsActive],
+jStudent.[Name] AS [StudentName],
+jBatch.[Batch_Name] AS [BatchBatchName],
+T0.[StudentDepartment] AS [StudentDepartment] 
+FROM [dbo].[StudentInfo_tbl] T0 
+LEFT JOIN [dbo].[StudentInfo_tbl] jStudent ON (jStudent.[Student_Id] = T0.[Student_Id]) 
+LEFT JOIN [dbo].[Batch_tbl] jBatch ON (jBatch.[Batch_Id] = T0.[Batch_Id]) 
+ORDER BY CONCAT(T0.[Name], CONCAT(' - ' , T0.Student_Id)), T0.[Student_Id];
+SELECT count(*)  
+FROM [dbo].[StudentInfo_tbl] T0 
+LEFT JOIN [dbo].[StudentInfo_tbl] jStudent ON (jStudent.[Student_Id] = T0.[Student_Id]) 
+LEFT JOIN [dbo].[Batch_tbl] jBatch ON (jBatch.[Batch_Id] = T0.[Batch_Id])
+
+[D] 2019-12-30T20:23:15.931 END - ExecuteReader
+[D] 2019-12-30T20:23:20.237 ExecuteReader
+DECLARE @p1 INT = 1002;
+
+SELECT 
+T0.[Student_Id] AS [StudentId],
+T0.[Name] AS [Name],
+T0.[Gender] AS [Gender],
+T0.[College_Name] AS [CollegeName],
+T0.[College_batch] AS [CollegeBatch],
+T0.[Father_Name] AS [FatherName],
+T0.[Mother_Name] AS [MotherName],
+T0.[Address] AS [Address],
+T0.[Description] AS [Description],
+T0.[Mother_Phone] AS [MotherPhone],
+T0.[Father_Phone] AS [FatherPhone],
+T0.[Personal_Phone] AS [PersonalPhone],
+T0.[User_Image] AS [UserImage],
+T0.[Batch_Id] AS [BatchId],
+T0.[AdmissionDate] AS [AdmissionDate],
+T0.[AdmissionType] AS [AdmissionType],
+T0.[Course_TotalFee] AS [CourseTotalFee],
+T0.[Course_Duration] AS [CourseDuration],
+T0.[Monthly_Fee] AS [MonthlyFee],
+T0.[Left_Date] AS [LeftDate],
+T0.[Entry_Date] AS [EntryDate],
+T0.[Entry_User] AS [EntryUser],
+T0.[IsActive] AS [IsActive],
+jStudent.[Name] AS [StudentName],
+jStudent.[Gender] AS [StudentGender],
+jStudent.[College_Name] AS [StudentCollegeName],
+jStudent.[College_batch] AS [StudentCollegeBatch],
+jStudent.[Father_Name] AS [StudentFatherName],
+jStudent.[Mother_Name] AS [StudentMotherName],
+jStudent.[Address] AS [StudentAddress],
+jStudent.[Description] AS [StudentDescription],
+jStudent.[Mother_Phone] AS [StudentMotherPhone],
+jStudent.[Father_Phone] AS [StudentFatherPhone],
+jStudent.[Personal_Phone] AS [StudentPersonalPhone],
+jStudent.[User_Image] AS [StudentUserImage],
+jStudent.[Batch_Id] AS [StudentBatchId],
+jStudent.[AdmissionDate] AS [StudentAdmissionDate],
+jStudent.[AdmissionType] AS [StudentAdmissionType],
+jStudent.[Course_TotalFee] AS [StudentCourseTotalFee],
+jStudent.[Course_Duration] AS [StudentCourseDuration],
+jStudent.[Monthly_Fee] AS [StudentMonthlyFee],
+jStudent.[Left_Date] AS [StudentLeftDate],
+jStudent.[Entry_Date] AS [StudentEntryDate],
+jStudent.[Entry_User] AS [StudentEntryUser],
+jStudent.[IsActive] AS [StudentIsActive],
+jBatch.[Batch_Name] AS [BatchBatchName],
+jBatch.[Batch_Time] AS [BatchBatchTime],
+jBatch.[Batch_Days] AS [BatchBatchDays],
+jBatch.[IsActive] AS [BatchIsActive],
+CONCAT(T0.[Name], CONCAT(' - ' , T0.Student_Id)) AS [LookupText],
+T0.[StudentDepartment] AS [StudentDepartment] 
+FROM [dbo].[StudentInfo_tbl] T0 
+LEFT JOIN [dbo].[StudentInfo_tbl] jStudent ON (jStudent.[Student_Id] = T0.[Student_Id]) 
+LEFT JOIN [dbo].[Batch_tbl] jBatch ON (jBatch.[Batch_Id] = T0.[Batch_Id]) 
+WHERE (T0.[Student_Id] = @p1)
+
+[D] 2019-12-30T20:23:20.242 END - ExecuteReader
+[D] 2019-12-30T20:23:37.449 ExecuteReader
+
+SELECT 
+T0.[Student_Id] AS [StudentId],
+CONCAT(T0.[Name], CONCAT(' - ' , T0.Student_Id)) AS [LookupText] 
+FROM [dbo].[StudentInfo_tbl] T0 
+ORDER BY CONCAT(T0.[Name], CONCAT(' - ' , T0.Student_Id))
+
+[D] 2019-12-30T20:23:37.451 END - ExecuteReader
+[D] 2019-12-30T20:23:37.652 ExecuteReader
+
+SELECT TOP 20 
+T0.[Payment_Id] AS [PaymentId],
+T0.[Student_Id] AS [StudentId],
+T0.[Payment_Date] AS [PaymentDate],
+T0.[Amount] AS [Amount],
+T0.[Entry_Date] AS [EntryDate],
+T0.[Entry_User] AS [EntryUser] 
+FROM [dbo].[PaymentInfo_tbl] T0 
+ORDER BY T0.[Payment_Id];
+SELECT count(*)  
+FROM [dbo].[PaymentInfo_tbl] T0
+
+[D] 2019-12-30T20:23:37.655 END - ExecuteReader
+[D] 2019-12-30T20:23:42.506 ExecuteReader
+
+SELECT 
+T0.[ExamID] AS [ExamId],
+T0.[Exam_Name] AS [ExamName] 
+FROM [dbo].[ExamType] T0 
+ORDER BY T0.[Exam_Name]
+
+[D] 2019-12-30T20:23:42.510 END - ExecuteReader
+[D] 2019-12-30T20:23:42.607 ExecuteReader
+
+SELECT TOP 20 
+T0.[ResultID] AS [ResultId],
+T0.[ExamDate] AS [ExamDate],
+T0.[Student_Id] AS [StudentId],
+T0.[BatchId] AS [BatchId],
+T0.[ExamType] AS [ExamType],
+T0.[ChapterNo] AS [ChapterNo],
+T0.[TotalMark] AS [TotalMark],
+T0.[ObatainedMark] AS [ObatainedMark],
+T0.[HeightMark] AS [HeightMark],
+jExamType.[Exam_Name] AS [ExamTypeExamName],
+jBatch.[Batch_Name] AS [BatchBatchName] 
+FROM [dbo].[ExamResult] T0 
+LEFT JOIN [dbo].[ExamType] jExamType ON (jExamType.[ExamID] = T0.[ExamType]) 
+LEFT JOIN [dbo].[Batch_tbl] jBatch ON (jBatch.[Batch_Id] = T0.[BatchId]) 
+ORDER BY T0.[ChapterNo], T0.[ResultID];
+SELECT count(*)  
+FROM [dbo].[ExamResult] T0 
+LEFT JOIN [dbo].[ExamType] jExamType ON (jExamType.[ExamID] = T0.[ExamType]) 
+LEFT JOIN [dbo].[Batch_tbl] jBatch ON (jBatch.[Batch_Id] = T0.[BatchId])
+
+[D] 2019-12-30T20:23:42.613 END - ExecuteReader

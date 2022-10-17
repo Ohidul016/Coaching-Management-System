@@ -1,0 +1,65 @@
+﻿namespace ConsoleProject.Default {
+    export interface StudentInfoTblRow {
+        StudentId?: number;
+        Name?: string;
+        Gender?: boolean;
+        CollegeName?: string;
+        CollegeBatch?: string;
+        FatherName?: string;
+        MotherName?: string;
+        Address?: string;
+        Description?: string;
+        Batch_Time?: string;
+        ParentsPhone?: string;
+        PersonalPhone?: string;
+        UserImage?: string;
+        AdmissionDate?: string;
+        AdmissionType?: Default.EnumList.AdmissionType;
+        CourseTotalFee?: number;
+        CourseDuration?: number;
+        MonthlyFee?: number;
+        LeftDate?: string;
+        EntryDate?: string;
+        EntryUser?: string;
+        IsActive?: number;
+        LookupText?: string;
+    }
+
+    export namespace StudentInfoTblRow {
+        export const idProperty = 'StudentId';
+        export const nameProperty = 'LookupText';
+        export const localTextPrefix = 'Default.StudentInfoTbl';
+        export const lookupKey = 'Default.StudentInfoTbl';
+
+        export function getLookup(): Q.Lookup<StudentInfoTblRow> {
+            return Q.getLookup<StudentInfoTblRow>('Default.StudentInfoTbl');
+        }
+
+        export declare const enum Fields {
+            StudentId = "StudentId",
+            Name = "Name",
+            Gender = "Gender",
+            CollegeName = "CollegeName",
+            CollegeBatch = "CollegeBatch",
+            FatherName = "FatherName",
+            MotherName = "MotherName",
+            Address = "Address",
+            Description = "Description",
+            Batch_Time = "Batch_Time",
+            ParentsPhone = "ParentsPhone",
+            PersonalPhone = "PersonalPhone",
+            UserImage = "UserImage",
+            AdmissionDate = "AdmissionDate",
+            AdmissionType = "AdmissionType",
+            CourseTotalFee = "CourseTotalFee",
+            CourseDuration = "CourseDuration",
+            MonthlyFee = "MonthlyFee",
+            LeftDate = "LeftDate",
+            EntryDate = "EntryDate",
+            EntryUser = "EntryUser",
+            IsActive = "IsActive",
+            LookupText = "LookupText"
+        }
+    }
+}
+

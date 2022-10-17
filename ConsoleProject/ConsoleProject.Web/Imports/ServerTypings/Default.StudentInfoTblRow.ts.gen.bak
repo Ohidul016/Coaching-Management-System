@@ -1,0 +1,164 @@
+﻿
+namespace ConsoleProject.Default {
+    export interface StudentInfoTblRow {
+        StudentId?: number;
+        Name?: string;
+        Gender?: boolean;
+        CollegeName?: string;
+        CollegeBatch?: string;
+        FatherName?: string;
+        MotherName?: string;
+        Address?: string;
+        Description?: string;
+        MotherPhone?: string;
+        FatherPhone?: string;
+        PersonalPhone?: string;
+        UserImage?: string;
+        BatchId?: number;
+        AdmissionDate?: string;
+        AdmissionType?: number;
+        CourseTotalFee?: number;
+        CourseDuration?: number;
+        MonthlyFee?: number;
+        LeftDate?: string;
+        EntryDate?: string;
+        EntryUser?: string;
+        IsActive?: boolean;
+        StudentName?: string;
+        StudentGender?: boolean;
+        StudentCollegeName?: string;
+        StudentCollegeBatch?: string;
+        StudentFatherName?: string;
+        StudentMotherName?: string;
+        StudentAddress?: string;
+        StudentDescription?: string;
+        StudentMotherPhone?: string;
+        StudentFatherPhone?: string;
+        StudentPersonalPhone?: string;
+        StudentUserImage?: string;
+        StudentBatchId?: number;
+        StudentAdmissionDate?: string;
+        StudentAdmissionType?: number;
+        StudentCourseTotalFee?: number;
+        StudentCourseDuration?: number;
+        StudentMonthlyFee?: number;
+        StudentLeftDate?: string;
+        StudentEntryDate?: string;
+        StudentEntryUser?: string;
+        StudentIsActive?: boolean;
+        BatchBatchName?: string;
+        BatchBatchTime?: string;
+        BatchBatchDays?: string;
+        BatchIsActive?: boolean;
+    }
+
+    export namespace StudentInfoTblRow {
+        export const idProperty = 'StudentId';
+        export const nameProperty = 'Name';
+        export const localTextPrefix = 'Default.StudentInfoTbl';
+
+        export namespace Fields {
+            export declare const StudentId;
+            export declare const Name;
+            export declare const Gender;
+            export declare const CollegeName;
+            export declare const CollegeBatch;
+            export declare const FatherName;
+            export declare const MotherName;
+            export declare const Address;
+            export declare const Description;
+            export declare const MotherPhone;
+            export declare const FatherPhone;
+            export declare const PersonalPhone;
+            export declare const UserImage;
+            export declare const BatchId;
+            export declare const AdmissionDate;
+            export declare const AdmissionType;
+            export declare const CourseTotalFee;
+            export declare const CourseDuration;
+            export declare const MonthlyFee;
+            export declare const LeftDate;
+            export declare const EntryDate;
+            export declare const EntryUser;
+            export declare const IsActive;
+            export declare const StudentName;
+            export declare const StudentGender;
+            export declare const StudentCollegeName;
+            export declare const StudentCollegeBatch;
+            export declare const StudentFatherName;
+            export declare const StudentMotherName;
+            export declare const StudentAddress;
+            export declare const StudentDescription;
+            export declare const StudentMotherPhone;
+            export declare const StudentFatherPhone;
+            export declare const StudentPersonalPhone;
+            export declare const StudentUserImage;
+            export declare const StudentBatchId;
+            export declare const StudentAdmissionDate;
+            export declare const StudentAdmissionType;
+            export declare const StudentCourseTotalFee;
+            export declare const StudentCourseDuration;
+            export declare const StudentMonthlyFee;
+            export declare const StudentLeftDate;
+            export declare const StudentEntryDate;
+            export declare const StudentEntryUser;
+            export declare const StudentIsActive;
+            export declare const BatchBatchName;
+            export declare const BatchBatchTime;
+            export declare const BatchBatchDays;
+            export declare const BatchIsActive;
+        }
+
+        [
+            'StudentId',
+            'Name',
+            'Gender',
+            'CollegeName',
+            'CollegeBatch',
+            'FatherName',
+            'MotherName',
+            'Address',
+            'Description',
+            'MotherPhone',
+            'FatherPhone',
+            'PersonalPhone',
+            'UserImage',
+            'BatchId',
+            'AdmissionDate',
+            'AdmissionType',
+            'CourseTotalFee',
+            'CourseDuration',
+            'MonthlyFee',
+            'LeftDate',
+            'EntryDate',
+            'EntryUser',
+            'IsActive',
+            'StudentName',
+            'StudentGender',
+            'StudentCollegeName',
+            'StudentCollegeBatch',
+            'StudentFatherName',
+            'StudentMotherName',
+            'StudentAddress',
+            'StudentDescription',
+            'StudentMotherPhone',
+            'StudentFatherPhone',
+            'StudentPersonalPhone',
+            'StudentUserImage',
+            'StudentBatchId',
+            'StudentAdmissionDate',
+            'StudentAdmissionType',
+            'StudentCourseTotalFee',
+            'StudentCourseDuration',
+            'StudentMonthlyFee',
+            'StudentLeftDate',
+            'StudentEntryDate',
+            'StudentEntryUser',
+            'StudentIsActive',
+            'BatchBatchName',
+            'BatchBatchTime',
+            'BatchBatchDays',
+            'BatchIsActive'
+        ].forEach(x => (<any>Fields)[x] = x);
+    }
+}

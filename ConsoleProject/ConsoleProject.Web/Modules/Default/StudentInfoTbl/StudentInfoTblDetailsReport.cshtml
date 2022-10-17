@@ -1,0 +1,135 @@
+﻿@model ConsoleProject.Default.StudentInfoDetailsReportData
+
+@if ((bool?)ViewData["Printing"] == true)
+{
+    Layout = MVC.Views.Shared._LayoutReport;
+}
+
+    <section class="invoice" style="font-size: 18px">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    Admission Form
+                    <small class="pull-right">Date: @DateTime.Now.ToShortDateString()</small>
+                </h2>
+            </div>
+        </div>
+        <!-- info row -->
+        <!-- /.row -->
+        <!-- Table row -->
+        <div class="row">
+            <div class="col-xs-12 table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="4" class="text-center"> Personal Details</th>
+                        </tr>
+                        <tr>
+                            <th>Full Name</th>
+                            <td>@Model.Student.StudentName</td>
+                            <th>Gender</th>
+                            <td>
+                                @if (@Model.Student.StudentGender == true)
+                                {
+                                    <b> Male </b>
+                                }
+                                else
+                                {
+                                    <b> Female </b>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Father's Name</th>
+                            <td>@Model.Student.FatherName</td>
+                            <th>Mother's Name</th>
+                            <td>@Model.Student.MotherName</td>
+                        </tr>
+                        <tr>
+                            <th>College Name</th>
+                            <td>@Model.Student.CollegeName</td>
+                            <th>College Batch</th>
+                            <td>@Model.Student.CollegeBatch</td>
+                        </tr>
+                        <tr>
+                            <th>Parent's Mobile Number  </th>
+                            <td>@Model.Student.FatherPhone , @Model.Student.MotherPhone </td>
+                            <th>Peronal Mobile Number</th>
+                            <td>@Model.Student.PersonalPhone</td>
+                        </tr>
+                        <tr>
+                            <th>Address</th>
+                            <td colspan="3">@Model.Student.StudentAddress</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <!-- /.col -->
+        </div>
+
+        <!-- Table row -->
+        <div class="row" style=" margin-top:30px">
+            <div class="col-xs-12 table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="4" class="text-center">Admission Information</th>
+                        </tr>
+                        <tr>
+                            <th>Admission Type</th>
+                            <td>@Model.Student.AdmissionType</td>
+                            <th>Admission Details</th>
+                            <td>
+                                @if (@Model.Student.AdmissionType == ConsoleProject.Default.EnumList.AdmissionType.Monthly)
+                                {
+                                    <b> Monthly Fee -    @Model.Student.MonthlyFee </b>
+                                }
+                                else
+                                {
+                                    <b> Course Total Fee -    @Model.Student.CourseTotalFee </b>
+                                    <br />
+                                    <b>  Course Duration -    @Model.Student.CourseDuration </b>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Admission Date</th>
+                            <td>
+                                @{
+                                    var date1 = Convert.ToDateTime(Model.Student.EntryDate).ToString("dd/MM/yyyy");
+
+                                }
+                                @date1
+                               
+                            </td>
+                            <th>Joining Date</th>
+                            <td>
+                                @{
+                                    var date = Convert.ToDateTime(Model.Student.AdmissionDate).ToString("dd/MM/yyyy");
+                                }
+                                @date
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Batch Name</th>
+                            <td>@Model.Student.BatchBatchName</td>
+                            <th>Batch Details</th>
+                            <td>
+                                Batch Time :
+                                @Model.Student.BatchBatchTime
+
+                                <br />
+                                Batch Days :
+                                @Model.Student.BatchBatchDays
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <!-- /.col -->
+        </div>
+
+
+
+
+    </section>

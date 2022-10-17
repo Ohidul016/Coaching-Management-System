@@ -1,0 +1,166 @@
+﻿[D] 2019-12-30T21:55:05.269 Dapper.QueryInternal
+DECLARE name NVARCHAR(4000) = 'ConsoleProject_Default_v1';
+
+SELECT * FROM sys.databases WHERE NAME = @name
+
+[D] 2019-12-30T21:55:11.852 ExecuteReader
+DECLARE @p1 NVARCHAR(4000) = 'admin';
+
+SELECT 
+T0.[UserId] AS [UserId],
+T0.[Username] AS [Username],
+T0.[Source] AS [Source],
+T0.[PasswordHash] AS [PasswordHash],
+T0.[PasswordSalt] AS [PasswordSalt],
+T0.[DisplayName] AS [DisplayName],
+T0.[Email] AS [Email],
+T0.[UserImage] AS [UserImage],
+T0.[LastDirectoryUpdate] AS [LastDirectoryUpdate],
+T0.[IsActive] AS [IsActive],
+T0.[InsertUserId] AS [InsertUserId],
+T0.[InsertDate] AS [InsertDate],
+T0.[UpdateUserId] AS [UpdateUserId],
+T0.[UpdateDate] AS [UpdateDate] 
+FROM [Users] T0 
+WHERE (T0.[Username] = @p1)
+
+[D] 2019-12-30T21:55:11.859 END - ExecuteReader
+[D] 2019-12-30T21:55:12.502 ExecuteReader
+
+SELECT 
+T0.[Id] AS [Id],
+T0.[LanguageName] AS [LanguageName],
+T0.[LanguageId] AS [LanguageId] 
+FROM [Languages] T0 
+ORDER BY T0.[LanguageName]
+
+[D] 2019-12-30T21:55:12.505 END - ExecuteReader
+[D] 2019-12-30T21:55:17.131 ExecuteReader
+
+SELECT 
+T0.[Batch_Id] AS [BatchId],
+CONCAT(T0.[Batch_Name], CONCAT(' : Time( ' , T0.Batch_Time,' )') , CONCAT(' Day : ' , T0.Batch_Days)) AS [LookupText] 
+FROM [dbo].[Batch_tbl] T0 
+ORDER BY CONCAT(T0.[Batch_Name], CONCAT(' : Time( ' , T0.Batch_Time,' )') , CONCAT(' Day : ' , T0.Batch_Days))
+
+[D] 2019-12-30T21:55:17.132 END - ExecuteReader
+[D] 2019-12-30T21:55:17.531 ExecuteReader
+
+SELECT TOP 20 
+T0.[Student_Id] AS [StudentId],
+T0.[Name] AS [Name],
+T0.[Gender] AS [Gender],
+T0.[College_Name] AS [CollegeName],
+T0.[College_batch] AS [CollegeBatch],
+T0.[Father_Name] AS [FatherName],
+T0.[Mother_Name] AS [MotherName],
+T0.[Address] AS [Address],
+T0.[Description] AS [Description],
+T0.[Mother_Phone] AS [MotherPhone],
+T0.[Father_Phone] AS [FatherPhone],
+T0.[Personal_Phone] AS [PersonalPhone],
+T0.[User_Image] AS [UserImage],
+T0.[Batch_Id] AS [BatchId],
+T0.[AdmissionDate] AS [AdmissionDate],
+T0.[AdmissionType] AS [AdmissionType],
+T0.[Course_TotalFee] AS [CourseTotalFee],
+T0.[Course_Duration] AS [CourseDuration],
+T0.[Monthly_Fee] AS [MonthlyFee],
+T0.[Left_Date] AS [LeftDate],
+T0.[Entry_Date] AS [EntryDate],
+T0.[Entry_User] AS [EntryUser],
+T0.[IsActive] AS [IsActive],
+jStudent.[Name] AS [StudentName],
+jBatch.[Batch_Name] AS [BatchBatchName],
+T0.[StudentDepartment] AS [StudentDepartment] 
+FROM [dbo].[StudentInfo_tbl] T0 
+LEFT JOIN [dbo].[StudentInfo_tbl] jStudent ON (jStudent.[Student_Id] = T0.[Student_Id]) 
+LEFT JOIN [dbo].[Batch_tbl] jBatch ON (jBatch.[Batch_Id] = T0.[Batch_Id]) 
+ORDER BY CONCAT(T0.[Name], CONCAT(' - ' , T0.Student_Id)), T0.[Student_Id];
+SELECT count(*)  
+FROM [dbo].[StudentInfo_tbl] T0 
+LEFT JOIN [dbo].[StudentInfo_tbl] jStudent ON (jStudent.[Student_Id] = T0.[Student_Id]) 
+LEFT JOIN [dbo].[Batch_tbl] jBatch ON (jBatch.[Batch_Id] = T0.[Batch_Id])
+
+[D] 2019-12-30T21:55:17.532 END - ExecuteReader
+[D] 2019-12-30T21:55:22.564 ExecuteReader
+DECLARE @p1 INT = 1002;
+
+SELECT TOP 20 
+T0.[Student_Id] AS [StudentId],
+T0.[Name] AS [Name],
+T0.[Gender] AS [Gender],
+T0.[College_Name] AS [CollegeName],
+T0.[College_batch] AS [CollegeBatch],
+T0.[Father_Name] AS [FatherName],
+T0.[Mother_Name] AS [MotherName],
+T0.[Address] AS [Address],
+T0.[Description] AS [Description],
+T0.[Mother_Phone] AS [MotherPhone],
+T0.[Father_Phone] AS [FatherPhone],
+T0.[Personal_Phone] AS [PersonalPhone],
+T0.[User_Image] AS [UserImage],
+T0.[Batch_Id] AS [BatchId],
+T0.[AdmissionDate] AS [AdmissionDate],
+T0.[AdmissionType] AS [AdmissionType],
+T0.[Course_TotalFee] AS [CourseTotalFee],
+T0.[Course_Duration] AS [CourseDuration],
+T0.[Monthly_Fee] AS [MonthlyFee],
+T0.[Left_Date] AS [LeftDate],
+T0.[Entry_Date] AS [EntryDate],
+T0.[Entry_User] AS [EntryUser],
+T0.[IsActive] AS [IsActive],
+jStudent.[Name] AS [StudentName],
+jBatch.[Batch_Name] AS [BatchBatchName],
+T0.[StudentDepartment] AS [StudentDepartment] 
+FROM [dbo].[StudentInfo_tbl] T0 
+LEFT JOIN [dbo].[StudentInfo_tbl] jStudent ON (jStudent.[Student_Id] = T0.[Student_Id]) 
+LEFT JOIN [dbo].[Batch_tbl] jBatch ON (jBatch.[Batch_Id] = T0.[Batch_Id]) 
+WHERE (T0.[Student_Id] = @p1) 
+ORDER BY CONCAT(T0.[Name], CONCAT(' - ' , T0.Student_Id)), T0.[Student_Id];
+SELECT count(*)  
+FROM [dbo].[StudentInfo_tbl] T0 
+LEFT JOIN [dbo].[StudentInfo_tbl] jStudent ON (jStudent.[Student_Id] = T0.[Student_Id]) 
+LEFT JOIN [dbo].[Batch_tbl] jBatch ON (jBatch.[Batch_Id] = T0.[Batch_Id]) 
+WHERE (T0.[Student_Id] = @p1)
+
+[D] 2019-12-30T21:55:22.574 END - ExecuteReader
+[D] 2019-12-30T21:55:25.772 ExecuteReader
+
+SELECT TOP 20 
+T0.[Student_Id] AS [StudentId],
+T0.[Name] AS [Name],
+T0.[Gender] AS [Gender],
+T0.[College_Name] AS [CollegeName],
+T0.[College_batch] AS [CollegeBatch],
+T0.[Father_Name] AS [FatherName],
+T0.[Mother_Name] AS [MotherName],
+T0.[Address] AS [Address],
+T0.[Description] AS [Description],
+T0.[Mother_Phone] AS [MotherPhone],
+T0.[Father_Phone] AS [FatherPhone],
+T0.[Personal_Phone] AS [PersonalPhone],
+T0.[User_Image] AS [UserImage],
+T0.[Batch_Id] AS [BatchId],
+T0.[AdmissionDate] AS [AdmissionDate],
+T0.[AdmissionType] AS [AdmissionType],
+T0.[Course_TotalFee] AS [CourseTotalFee],
+T0.[Course_Duration] AS [CourseDuration],
+T0.[Monthly_Fee] AS [MonthlyFee],
+T0.[Left_Date] AS [LeftDate],
+T0.[Entry_Date] AS [EntryDate],
+T0.[Entry_User] AS [EntryUser],
+T0.[IsActive] AS [IsActive],
+jStudent.[Name] AS [StudentName],
+jBatch.[Batch_Name] AS [BatchBatchName],
+T0.[StudentDepartment] AS [StudentDepartment] 
+FROM [dbo].[StudentInfo_tbl] T0 
+LEFT JOIN [dbo].[StudentInfo_tbl] jStudent ON (jStudent.[Student_Id] = T0.[Student_Id]) 
+LEFT JOIN [dbo].[Batch_tbl] jBatch ON (jBatch.[Batch_Id] = T0.[Batch_Id]) 
+ORDER BY CONCAT(T0.[Name], CONCAT(' - ' , T0.Student_Id)), T0.[Student_Id];
+SELECT count(*)  
+FROM [dbo].[StudentInfo_tbl] T0 
+LEFT JOIN [dbo].[StudentInfo_tbl] jStudent ON (jStudent.[Student_Id] = T0.[Student_Id]) 
+LEFT JOIN [dbo].[Batch_tbl] jBatch ON (jBatch.[Batch_Id] = T0.[Batch_Id])
+
+[D] 2019-12-30T21:55:25.773 END - ExecuteReader

@@ -1,0 +1,115 @@
+﻿@model ConsoleProject.Default.ExamResultReportData 
+
+@if ((bool?)ViewData["Printing"] == true)
+{
+
+    Layout = MVC.Views.Shared._LayoutEResultReport;
+}
+
+    <section class="invoice" style="font-size: 18px">
+        <div class="row">
+            <div class="col-xs-12">
+                <center>
+                    <h2 class="page-header">
+                        @Model.Student.ExamTypeExamName  Result
+                    </h2>
+                </center>
+               
+            </div>
+        </div>
+        <!-- info row -->
+        <!-- /.row -->
+        <!-- Table row -->
+        <div class="row">
+            <div class="col-xs-12 table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="4" class="text-center"> Personal Details</th>
+                        </tr>
+                        <tr>
+                            <th>Full Name</th>
+                            <td>@Model.Student.StudentName</td>
+                            <th>Gender</th>
+                            <td>
+                                @if (@Model.Student.StudentGender == true)
+                                {
+                                    <b> Male </b>
+                                }
+                                else
+                                {
+                                    <b> Female </b>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Father's Name</th>
+                            <td>@Model.Student.StudentFatherName</td>
+                            <th>Mother's Name</th>
+                            <td>@Model.Student.StudentMotherName</td>
+                        </tr>
+                        <tr>
+                            <th>College Name</th>
+                            <td>@Model.Student.StudentCollegeName</td>
+                            <th>College Batch</th>
+                            <td>@Model.Student.StudentCollegeBatch</td>
+                        </tr>
+                        <tr>
+                            <th>Batch Name </th>
+                            <td>@Model.Student.BatchBatchName </td>
+                            <th>Batch Details</th>
+                            <td>
+                                Day : @Model.Student.BatchBatchDays
+                                <br />
+                                Time : @Model.Student.BatchBatchTime
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <!-- /.col -->
+        </div>
+
+        <!-- Table row -->
+        <div class="row" style=" margin-top:30px">
+            <div class="col-xs-12 table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="4" class="text-center">Result Information</th>
+                        </tr>
+                        <tr>
+                            <th>Exam</th>
+                            <td>@Model.Student.ExamTypeExamName</td>
+                            <th>Exam Date</th>
+                            <td>
+                                @{
+                                    var date = Convert.ToDateTime(Model.Student.ExamDate).ToString("dd/MM/yyyy");
+                                }
+                                @date
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Total Mark</th>
+                            <td>@Model.Student.TotalMark</td>
+                            <th>Highest number</th>
+                            <td>@Model.Student.HeightMark</td>
+                        </tr>
+                        <tr>
+
+                            <th>Obatain Mark</th>
+                            <td colspan="3">
+                                <b>@Model.Student.ObatainedMark</b>
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <!-- /.col -->
+        </div>
+
+
+
+
+    </section>

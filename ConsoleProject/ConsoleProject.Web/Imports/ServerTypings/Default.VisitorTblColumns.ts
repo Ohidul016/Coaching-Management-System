@@ -1,0 +1,3 @@
+﻿namespace ConsoleProject.Default {
+}
+
